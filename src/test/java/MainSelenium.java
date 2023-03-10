@@ -6,15 +6,21 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+@Test
 public class MainSelenium {
 
-    public static void clickAnchor(ChromeDriver driver){
+    private static void clickAnchor(ChromeDriver driver){
                driver.get("https://demoqa.com");
        // WebElement element1 = driver.findElement(By.xpath("//div[@class='home-banner']/a"));
         WebElement element2 = driver.findElement(By.cssSelector("div.home-banner a"));
@@ -22,47 +28,47 @@ public class MainSelenium {
         element2.click();
 
     }
-    public static void clickByTagName(ChromeDriver driver){
+    private static void clickByTagName(ChromeDriver driver){
         driver.get("https://demoqa.com");
         //By.tagName
          WebElement header = driver.findElement(By.tagName("header"));
          header.click();
 
     }
-    public static void clickByID(ChromeDriver driver) {
+    private static void clickByID(ChromeDriver driver) {
         //by.id
         driver.get("https://demoqa.com/webtables");
         WebElement button=driver.findElement(By.id("addNewRecordButton"));
         button.click();
     }
-    public static void clickByLinkText(ChromeDriver driver) {
+    private static void clickByLinkText(ChromeDriver driver) {
         //By.linkText
         driver.get("https://demoqa.com/links");
         WebElement link = driver.findElement(By.linkText("Home"));
         link.click();
 
     }
-    public static void clickByName(ChromeDriver driver) {
+    private static void clickByName(ChromeDriver driver) {
         //By.name
         driver.get("https://demoqa.com");
         WebElement meta = driver.findElement(By.name("viewport"));
         System.out.println(meta.getAttribute("content"));
 
     }
-    public static void clickByPartialLinkTest(ChromeDriver driver) {
+    private static void clickByPartialLinkTest(ChromeDriver driver) {
         // By.partialLinkText
         driver.get("https://demoqa.com/links");
         WebElement link = driver.findElement(By.partialLinkText("Content"));
         link.click();
     }
-    public static void clickByClassName(ChromeDriver driver) {
+    private static void clickByClassName(ChromeDriver driver) {
         // By.className
         driver.get("https://demoqa.com/");
         driver.findElement(By.className("home-banner")).click();
 
     }
 
-    public static void getTextParagraph(ChromeDriver driver) {
+    private static void getTextParagraph(ChromeDriver driver) {
         //1. Basic Web Page Example
         driver.get("https://testpages.herokuapp.com/styled/basic-web-page-test.html");
         WebElement paragraph1 = driver.findElement(By.id("para1"));
@@ -72,7 +78,7 @@ public class MainSelenium {
         System.out.println("p2 "+paragraph2.getText());
 
     }
-    public static void getTextParagraphFor(ChromeDriver driver) {
+    private static void getTextParagraphFor(ChromeDriver driver) {
         //2. Element Attributes Examples
         driver.get("https://testpages.herokuapp.com/styled/attributes-test.html");
 
@@ -91,7 +97,7 @@ public class MainSelenium {
         }
 
     }
-    public static void getTextParagraph2(ChromeDriver driver) {
+    private static void getTextParagraph2(ChromeDriver driver) {
         //3.Find By Playground - Locator Examples
         driver.get("https://testpages.herokuapp.com/styled/find-by-playground-test.html");
         WebElement paragraph5 = driver.findElement(By.name("pName9"));
@@ -102,7 +108,7 @@ public class MainSelenium {
         WebElement link1 = ul.findElement(By.linkText("jump to para 11"));
         link1.click();
     }
-    public static void getTable(ChromeDriver driver) {
+    private static void getTable(ChromeDriver driver) {
         driver.get("https://testpages.herokuapp.com/styled/tag/table.html");
 
         WebElement table = driver.findElement(By.tagName("table"));
@@ -128,7 +134,7 @@ public class MainSelenium {
         WebElement refreshButton = driver.findElement(By.id("refreshtable"));
         refreshButton.click();
     }
-    public static void getScreenshot(ChromeDriver driver) {
+    private static void getScreenshot(ChromeDriver driver) {
 
         driver.get("https://demoqa.com");
         try {
@@ -149,7 +155,7 @@ public class MainSelenium {
         }
 
     }
-    public static void getButton(ChromeDriver driver) {
+    private static void getButton(ChromeDriver driver) {
 
         driver.get("https://demoqa.com/buttons");
         List<WebElement> buttons = driver.findElements(By.cssSelector(".btn.btn-primary"));
@@ -166,7 +172,7 @@ public class MainSelenium {
         actions.doubleClick(doubleClkBtn).build().perform();
 
     }
-    public static void getAlerts(ChromeDriver driver) {
+    private static void getAlerts(ChromeDriver driver) {
 
         driver.get("https://demoqa.com/alerts");
         WebElement firstButton = driver.findElement(By.id("alertButton"));
@@ -200,7 +206,7 @@ public class MainSelenium {
 
     }
 
-    public static void getRadioButtons(ChromeDriver driver) {
+    private static void getRadioButtons(ChromeDriver driver) {
         driver.get("http://demoqa.com/radio-button");
         WebElement yesRadioButton = driver.findElement(By.id("yesRadio"));
         WebElement noRadioButton = driver.findElement(By.id("noRadio"));
@@ -224,39 +230,9 @@ public class MainSelenium {
 
     }
 
-        public static void main(String[] args) {
-//        System.setProperty("webdriver.chrome.driver","src/test/chromedriver.exe");
-//        ChromeDriver driver = new ChromeDriver();
+    private static void windowHandlers() {
 
-        WebDriverManager.chromedriver().setup();
         ChromeDriver driver = new ChromeDriver();
-//        WebElement username = driver.findElement(By.xpath("//input[@name='username']"));
-//        WebElement password = driver.findElement(By.cssSelector("input[name='password']"));
-//        WebElement submitButton = driver.findElement(By.cssSelector("button[@type='submit']"));
-//
-//        username.clear();
-//        username.sendKeys("Admin");
-//        password.clear();
-//        password.sendKeys("admin123");
-//        submitButton.click();
-
-
-//        System.out.println("");
-//        WebElement ulOrange = driver.findElement(By.cssSelector("ul.oxd-main-menu"));
-//        List<WebElement> lis = ulOrange.findElements(By.tagName("li"));
-//        WebElement anchor = lis.get(1).findElement(By.cssSelector("a.oxd-main-menu-item"));
-//        anchor.click();
-//        WebElement div = driver.findElement(By.cssSelector("div.oxd-form-action"));
-//        WebElement searchButton = div.findElement(By.cssSelector("button.orangehrm-left-space"));
-//        button.click();
-
-//        WebElement body = driver.findElement(By.tagName("body"));
-//        System.out.println("BODY: "+body.getText()+body.getDomAttribute("div"));
-//
-//        WebElement div = body.findElement(By.id("app"));
-//        WebElement h5 = div.findElement(By.tagName("h5"));
-//        System.out.println("h5:"+h5.getText());
-
         driver.get("https://demoqa.com/browser-windows");
 
 
@@ -291,7 +267,101 @@ public class MainSelenium {
         }
         System.out.println(driver.findElement(By.id("sampleHeading")).getText());
 
-            driver.quit();
+        driver.quit();
         System.out.println("Finish");
+
     }
+
+    @Test
+    public void primulTest() {
+        WebDriverManager.chromedriver().setup();
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://demoqa.com/browser-windows");
+        driver.quit();
+        throw new RuntimeException("Custom Exception");
+    }
+
+    @Test
+    public void assertTest(){
+        WebDriverManager.chromedriver().setup();
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://demoqa.com/");
+        List<WebElement> cards = driver.findElements(By.className("card"));
+        assertEquals(cards.size(),6,"Wrong cart size");
+        driver.quit();
+    }
+
+    @Test
+    public void doubleClick() {
+        WebDriverManager.chromedriver().setup();
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://demoqa.com/buttons");
+        WebElement doubleClick = driver.findElement(By.id("doubleClickBtn"));
+        Actions actions = new Actions(driver);
+        actions.doubleClick(doubleClick).build().perform();
+        WebElement message = driver.findElement(By.id("doubleClickMessage"));
+        assertEquals(message.getText(),"You have done a double click","Double was not successful");
+        driver.quit();
+    }
+
+    @Test
+    public void rightClick() {
+        WebDriverManager.chromedriver().setup();
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://demoqa.com/buttons");
+        SoftAssert softAssert = new SoftAssert();
+        WebElement rClick = driver.findElement(By.id("rightClickBtn"));
+
+        softAssert.assertFalse(rClick.isDisplayed(),"Right click button is not displayed");
+
+        Actions actions = new Actions(driver);
+        actions.contextClick(rClick).build().perform();
+
+
+        WebElement message = driver.findElement(By.id("rightClickMessage"));
+        softAssert.assertEquals(message.getText(),"You have done a right clickx","R C was not successful");
+
+
+        driver.quit();
+        softAssert.assertAll();
+    }
+//
+//
+//        public static void main(String[] args) {
+////        System.setProperty("webdriver.chrome.driver","src/test/chromedriver.exe");
+////        ChromeDriver driver = new ChromeDriver();
+//
+//        WebDriverManager.chromedriver().setup();
+//        ChromeDriver driver = new ChromeDriver();
+////        WebElement username = driver.findElement(By.xpath("//input[@name='username']"));
+////        WebElement password = driver.findElement(By.cssSelector("input[name='password']"));
+////        WebElement submitButton = driver.findElement(By.cssSelector("button[@type='submit']"));
+////
+////        username.clear();
+////        username.sendKeys("Admin");
+////        password.clear();
+////        password.sendKeys("admin123");
+////        submitButton.click();
+//
+//
+////        System.out.println("");
+////        WebElement ulOrange = driver.findElement(By.cssSelector("ul.oxd-main-menu"));
+////        List<WebElement> lis = ulOrange.findElements(By.tagName("li"));
+////        WebElement anchor = lis.get(1).findElement(By.cssSelector("a.oxd-main-menu-item"));
+////        anchor.click();
+////        WebElement div = driver.findElement(By.cssSelector("div.oxd-form-action"));
+////        WebElement searchButton = div.findElement(By.cssSelector("button.orangehrm-left-space"));
+////        button.click();
+//
+////        WebElement body = driver.findElement(By.tagName("body"));
+////        System.out.println("BODY: "+body.getText()+body.getDomAttribute("div"));
+////
+////        WebElement div = body.findElement(By.id("app"));
+////        WebElement h5 = div.findElement(By.tagName("h5"));
+////        System.out.println("h5:"+h5.getText());
+//
+//
+//            driver.quit();
+//        System.out.println("Finish");
+//    }
 }
