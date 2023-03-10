@@ -291,8 +291,6 @@ public class MainSelenium {
         }
         System.out.println(driver.findElement(By.id("sampleHeading")).getText());
 
-
-
             driver.quit();
         System.out.println("Finish");
     }
